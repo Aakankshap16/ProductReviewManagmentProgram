@@ -19,7 +19,8 @@
             Managemenent managemenent = new Managemenent();
             //managemenent.topRecords(ProductReviewList);
             //managemenent.SelectedRecords(ProductReviewList);
-            managemenent.RetrieveCountOfRecords(ProductReviewList);
+            //managemenent.RetrieveCountOfRecords(ProductReviewList);
+            managemenent.retrieveID(ProductReviewList);
         }
     }
 }
