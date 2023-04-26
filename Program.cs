@@ -1,8 +1,8 @@
 ﻿namespace ProductReviewManagmentWithLinq
 {
-  public class Program
+    public class Program
     {
-       public static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Product Review Managment Program!!!");
 
@@ -17,7 +17,8 @@
             };
 
             Managemenent managemenent = new Managemenent();
-            managemenent.topRecords(ProductReviewList);
+            //managemenent.topRecords(ProductReviewList);
+            managemenent.SelectedRecords(ProductReviewList);
         }
     }
 }
