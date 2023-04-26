@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace ProductReviewManagmentWithLinq
 
         }
 
-        //
+        //record according to condition
         public void SelectedRecords(List<ProductReview> ListOfProductReview)
         {
             var RecordData = from products in ListOfProductReview
@@ -36,6 +37,17 @@ namespace ProductReviewManagmentWithLinq
             {
                 Console.Write("{0} {1} {2} {3} {4}\n", record.ProductID, record.UserID, record.Review, record.Rating, record.IsLike);
 
+            }
+        }
+
+        //Count the record acc to productid
+        public void RetrieveCountOfRecords(List<ProductReview> ListOfProductReview)
+        {
+            var RecordData = ListOfProductReview.GroupBy(x => x.ProductID).Select
+                             (x => new { ProductID = x.Key, count = x.Count() });
+            foreach (var record in RecordData)
+            {
+                Console.WriteLine(record.ProductID + "-" + record.count);
             }
         }
     }
