@@ -50,5 +50,17 @@ namespace ProductReviewManagmentWithLinq
                 Console.WriteLine(record.ProductID + "-" + record.count);
             }
         }
+
+        // select only 2 records
+        public void retrieveID(List<ProductReview> ListOfProductReview)
+        {
+            var RecordData = from products in ListOfProductReview
+                             select
+                             new { ProductID = products.ProductID, review = products.Review };
+            foreach (var record in RecordData)
+            {
+                Console.WriteLine(record.ProductID + " " + record.review);
+            }
+        }
     }
 }
