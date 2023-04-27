@@ -21,7 +21,8 @@
             //managemenent.SelectedRecords(ProductReviewList);
             //managemenent.RetrieveCountOfRecords(ProductReviewList);
             //managemenent.retrieveID(ProductReviewList);
-              managemenent.SkipTop5Records(ProductReviewList);
+            // managemenent.SkipTop5Records(ProductReviewList);
+            managemenent.RetireveProductIDReview(ProductReviewList);
         }
     }
 }
