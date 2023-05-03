@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -83,6 +84,36 @@ namespace ProductReviewManagmentWithLinq
             foreach (var record in RecordData)
             {
                 Console.WriteLine(record.ProductID + " " + record.review);
+            }
+        }
+        public void AddDefaultValuesToDataTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ProductID", typeof(int));
+            dt.Columns.Add("UserID", typeof(int));
+            dt.Columns.Add("Rating", typeof(double));
+            dt.Columns.Add("Review", typeof(string));
+            dt.Columns.Add("IsLike", typeof(bool));
+
+            var defaultValues = Enumerable.Range(1, 25)
+                .Select(i => new ProductReview()
+                {
+                    ProductID = i,
+                    UserID = i * 10,
+                    Rating = i % 5 + 1,
+                    Review = $"Review {i}",
+                    IsLike = i % 2 == 0
+                });
+
+            foreach (var productReview in defaultValues)
+            {
+                dt.Rows.Add(productReview.ProductID, productReview.UserID, productReview.Rating, productReview.Review, productReview.IsLike);
+            }
+
+            Console.WriteLine($"DataTable with {dt.Rows.Count} rows created:");
+            foreach (DataRow row in dt.Rows)
+            {
+                Console.WriteLine($"{row["ProductID"]} {row["UserID"]} {row["Rating"]} {row["Review"]} {row["IsLike"]}");
             }
         }
 
